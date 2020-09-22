@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "868924064912",
+    "firebase_url": "https://rate-your-professor-a8f7d.firebaseio.com",
+    "project_id": "rate-your-professor-a8f7d",
+    "storage_bucket": "rate-your-professor-a8f7d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:868924064912:android:833e5cb28eb7f83d70c415",
+        "android_client_info": {
+          "package_name": "com.mejiokre.rate_your_prof"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "868924064912-t8tkfcrh2hfqrciso9vhnm8c93t84a5l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD0osK4RAETr9xy5zPPQChxyvfzmyGSo5A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "868924064912-t8tkfcrh2hfqrciso9vhnm8c93t84a5l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
