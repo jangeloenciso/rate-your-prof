@@ -8,7 +8,7 @@ void main() => runApp(MaterialApp(
         primaryColor: Color(0xFF0A0E21),
         scaffoldBackgroundColor: Color(0xFF0A0E21),
       ),
-  initialRoute: '/addProf',
+  initialRoute: '/',
   routes: {
     '/': (context) => InputPage(),
     '/profRating': (context) => ProfRating(),
