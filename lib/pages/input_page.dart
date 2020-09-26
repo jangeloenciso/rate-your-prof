@@ -29,7 +29,7 @@ class _InputPageState extends State<InputPage> {
         ),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 50.0),
-          child: TextFieldInput(hintText: 'Prof/University'),
+          child: AddProfFormWidget(hintText: 'Prof/University'),
         ),
         SizedBox(height: 20.0,),
         Text(
