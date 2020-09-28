@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 
 class AddProfFormWidget extends StatelessWidget {
@@ -5,15 +6,16 @@ class AddProfFormWidget extends StatelessWidget {
   //   Key key,
   // }) : super(key: key);
 
-  AddProfFormWidget({this.hintText});
+  AddProfFormWidget({this.hintText, this.formController});
 
   final String hintText;
-
+  final TextEditingController formController;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       // The validator receives the text that the user has entered.
+      controller: formController,
       validator: (value) {
         if (value.isEmpty) {
           return 'Please enter some text';
@@ -36,7 +38,7 @@ class AddProfFormWidget extends StatelessWidget {
 }
 
 // class TextFieldInput extends StatelessWidget {
-  
+
 //   TextFieldInput({this.hintText});
 
 //   final String hintText;

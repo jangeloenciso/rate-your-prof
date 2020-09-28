@@ -1,7 +1,8 @@
-// Rewrite this file, use a form
+
 
 import 'package:flutter/material.dart';
 import 'package:rate_your_prof/widgets/text_field_format.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class AddProfForm extends StatefulWidget {
   @override
@@ -10,6 +11,14 @@ class AddProfForm extends StatefulWidget {
 
 class _AddProfFormState extends State<AddProfForm> {
   final _formKey = GlobalKey<FormState>();
+
+  TextEditingController lastNameController = TextEditingController();
+  TextEditingController firstNameController = TextEditingController();
+  TextEditingController universityController = TextEditingController();
+
+  final firestoreInstance = FirebaseFirestore.instance;
+
+  // _AddProfFormState.initializeApp();
 
   @override
   Widget build(BuildContext context) {
@@ -22,12 +31,18 @@ class _AddProfFormState extends State<AddProfForm> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              AddProfFormWidget(hintText: 'First Name'),
-              SizedBox(height: 25.0,),
-              AddProfFormWidget(hintText: 'Last Name'),
-              SizedBox(height: 25.0,),
-              AddProfFormWidget(hintText: 'University/College'),
-              SizedBox(height: 25.0,),
+              AddProfFormWidget(hintText: 'First Name', formController: firstNameController),
+              SizedBox(
+                height: 25.0,
+              ),
+              AddProfFormWidget(hintText: 'Last Name', formController: lastNameController),
+              SizedBox(
+                height: 25.0,
+              ),
+              AddProfFormWidget(hintText: 'University/College', formController: universityController),
+              SizedBox(
+                height: 25.0,
+              ),
               RaisedButton(
                 onPressed: () {
                   // Validate returns true if the form is valid, otherwise false.
@@ -35,8 +50,13 @@ class _AddProfFormState extends State<AddProfForm> {
                     // If the form is valid, display a snackbar. In the real world,
                     // you'd often call a server or save the information in a database.
 
-                    Scaffold.of(context)
-                        .showSnackBar(SnackBar(content: Text('Processing Data')));
+                    firestoreInstance.collection("profs2").add({
+                      "First Name" : firstNameController.text,
+                      "Last Name" : lastNameController.text,
+                      "University/College" : universityController.text,
+                    });
+
+                    print('valid');
                   }
                 },
                 child: Text('Submit'),
@@ -48,7 +68,6 @@ class _AddProfFormState extends State<AddProfForm> {
     );
   }
 }
-
 
 // INITIAL UI
 
