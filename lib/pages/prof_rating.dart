@@ -9,6 +9,7 @@ class _ProfRatingState extends State<ProfRating> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(),
         body: Container(
       margin: EdgeInsets.fromLTRB(60.0, 0.0, 15.0, 0.0),
       child: Column(
@@ -16,7 +17,7 @@ class _ProfRatingState extends State<ProfRating> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             Text(
-              'FRANCISCO, RICHARD ANDRE',
+              'FRANCISCO, RICHARD ANDRE', 
               style: TextStyle(
                 fontSize: 40.0,
                 fontWeight: FontWeight.bold,

@@ -29,7 +29,7 @@ class _InputPageState extends State<InputPage> {
         ),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 50.0),
-          child: AddProfFormWidget(hintText: 'Prof/University'),
+          child: AddProfFormWidget(hintText: 'Prof/University'), // Search box -- using AddProfFormWidget (text_field_format.dart)
         ),
         SizedBox(height: 20.0,),
         Text(
