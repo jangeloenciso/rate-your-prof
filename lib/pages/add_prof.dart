@@ -32,18 +32,18 @@ class _AddProfFormState extends State<AddProfForm> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               AddProfFormWidget(
-                  hintText: 'First Name', formController: crudMethods.firstNameController),
+                hintText: 'First Name', formController: crudMethods.firstNameController),
               SizedBox(
                 height: 25.0,
               ),
               AddProfFormWidget(
-                  hintText: 'Last Name', formController: crudMethods.lastNameController),
+                hintText: 'Last Name', formController: crudMethods.lastNameController),
               SizedBox(
                 height: 25.0,
               ),
               AddProfFormWidget(
-                  hintText: 'University/College',
-                  formController: crudMethods.universityController),
+                hintText: 'University/College',
+                formController: crudMethods.universityController),
               SizedBox(
                 height: 25.0,
               ),

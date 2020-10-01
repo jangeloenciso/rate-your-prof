@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 class AddProfFormWidget extends StatelessWidget {
@@ -10,6 +9,10 @@ class AddProfFormWidget extends StatelessWidget {
 
   final String hintText;
   final TextEditingController formController;
+
+  emptyTextFormField() {
+    formController.clear();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -32,6 +35,14 @@ class AddProfFormWidget extends StatelessWidget {
           borderSide: BorderSide(color: Colors.red[400], width: 1.0),
         ),
         hintText: hintText,
+        prefixIcon: Icon(Icons.person_pin, color: Colors.white, size: 30.0),
+        suffixIcon: IconButton(
+          icon: Icon(
+            Icons.clear,
+            color: Colors.white,
+          ),
+          onPressed: emptyTextFormField,
+        ),
       ),
     );
   }
