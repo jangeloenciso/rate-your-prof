@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:rate_your_prof/widgets/text_field_format.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:rate_your_prof/methods/crud.dart';
+
+Crud crudMethods = Crud();
 
 class AddProfForm extends StatefulWidget {
   @override
@@ -10,27 +13,12 @@ class AddProfForm extends StatefulWidget {
 class _AddProfFormState extends State<AddProfForm> {
   final _formKey = GlobalKey<FormState>();
 
-  TextEditingController lastNameController = TextEditingController();
-  TextEditingController firstNameController = TextEditingController();
-  TextEditingController universityController = TextEditingController();
-
-  Map data;
-
-  addData() {
-    Map<String, dynamic> demoData = {
-      "lastName": lastNameController.text,
-      "firstName": firstNameController.text,
-      "university": universityController.text
-    };
-
+  getData() {
     CollectionReference collectionReference =
         FirebaseFirestore.instance.collection('profs');
-    collectionReference.add(demoData);
+
+    print(collectionReference.doc('TrirhiUq53MOhtiuqZ29').get());
   }
-
-  // CHECK
-
-  // _AddProfFormState.initializeApp();
 
   @override
   Widget build(BuildContext context) {
@@ -44,18 +32,18 @@ class _AddProfFormState extends State<AddProfForm> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               AddProfFormWidget(
-                  hintText: 'First Name', formController: firstNameController),
+                  hintText: 'First Name', formController: crudMethods.firstNameController),
               SizedBox(
                 height: 25.0,
               ),
               AddProfFormWidget(
-                  hintText: 'Last Name', formController: lastNameController),
+                  hintText: 'Last Name', formController: crudMethods.lastNameController),
               SizedBox(
                 height: 25.0,
               ),
               AddProfFormWidget(
                   hintText: 'University/College',
-                  formController: universityController),
+                  formController: crudMethods.universityController),
               SizedBox(
                 height: 25.0,
               ),
@@ -65,7 +53,7 @@ class _AddProfFormState extends State<AddProfForm> {
                   if (_formKey.currentState.validate()) {
                     // If the form is valid, display a snackbar. In the real world,
                     // you'd often call a server or save the information in a database.
-                    addData();
+                    crudMethods.addData();
                     Navigator.pushNamed(context, '/profRating');
                   }
                 },
