@@ -9,14 +9,26 @@ class Crud {
   TextEditingController universityController = TextEditingController();
 
   addData() {
-    Map<String, dynamic> demoData = {
+    String fullQueryKey = lastNameController.text + firstNameController.text;
+
+    List<String> splitList = fullQueryKey.split(' ');
+    List<String> indexList = [];
+
+    for (int i = 0; i < splitList.length; i++){
+      for(int j = 0; j < splitList[i].length + i; j++){
+        indexList.add(splitList[i].substring(0,j).toLowerCase());
+      }
+    }
+
+    Map<String, dynamic> profData = {
       "lastName": lastNameController.text,
       "firstName": firstNameController.text,
-      "university": universityController.text
+      "university": universityController.text,
+      "searchIndex": indexList,
     };
 
     CollectionReference collectionReference =
         FirebaseFirestore.instance.collection('profs');
-    collectionReference.add(demoData);
+    collectionReference.add(profData);
   }
 }

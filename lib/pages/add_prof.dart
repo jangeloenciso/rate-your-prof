@@ -13,12 +13,12 @@ class AddProfForm extends StatefulWidget {
 class _AddProfFormState extends State<AddProfForm> {
   final _formKey = GlobalKey<FormState>();
 
-  getData() {
-    CollectionReference collectionReference =
-        FirebaseFirestore.instance.collection('profs');
+  // getData() {
+  //   CollectionReference collectionReference =
+  //       FirebaseFirestore.instance.collection('profs');
 
-    print(collectionReference.doc('TrirhiUq53MOhtiuqZ29').get());
-  }
+  //   print(collectionReference.doc('TrirhiUq53MOhtiuqZ29').get());
+  // }
 
   @override
   Widget build(BuildContext context) {
