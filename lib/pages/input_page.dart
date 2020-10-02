@@ -1,6 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:rate_your_prof/widgets/text_field_format.dart';
+import 'package:lottie/lottie.dart';
+// import 'package:rate_your_prof/models/profs.dart';
 
 class InputPage extends StatefulWidget {
   @override
@@ -11,7 +13,10 @@ class _InputPageState extends State<InputPage> {
 
   TextEditingController searchController = TextEditingController();
   Future<QuerySnapshot> futureSearchResults;
-
+  String searchString;
+  // controlSearching(String str){
+  //   Future<QuerySnapshot> profs = prof
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -40,6 +45,44 @@ class _InputPageState extends State<InputPage> {
         SizedBox(height: 20.0,),
         Text(
           'can\'t find your prof? click here'
+        ),
+
+        //Search funcionality attempt
+        Expanded(
+          child: StreamBuilder<QuerySnapshot>(
+            stream: (searchString == null || searchString.trim() == '')
+            ? FirebaseFirestore.instance.collection('profs').snapshots()
+            : FirebaseFirestore.instance.collection('profs').where('searchIndex' , arrayContains: searchString).snapshots(),
+          builder: (context, snapshot){
+            if(snapshot.hasError){
+              return Text('Error: ${snapshot.error}');
+            }
+            switch(snapshot.connectionState){
+              case ConnectionState.waiting :
+              return SizedBox(
+                child: Center(
+                  child: Lottie.asset('animations/loading.json'),
+                ),
+              );
+              case ConnectionState.none :
+              return Text('No data present');
+
+              case ConnectionState.done :
+              return Text('Done');
+
+              default :
+              return new ListView(
+                children: snapshot.data.docs.map((DocumentSnapshot document){
+                  return new ListTile(
+                    title: StreamBuilder<QuerySnapshot>(
+                      Text('hi'),
+                    ),
+                  );
+                }).toList()
+              );
+            }
+          },
+          ),
         ),
       ],
     ));

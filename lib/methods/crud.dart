@@ -9,7 +9,7 @@ class Crud {
   TextEditingController universityController = TextEditingController();
 
   addData() {
-    String fullQueryKey = lastNameController.text + firstNameController.text;
+    String fullQueryKey = lastNameController.text + " " + firstNameController.text + " " + universityController.text;
 
     List<String> splitList = fullQueryKey.split(' ');
     List<String> indexList = [];
