@@ -1,5 +1,3 @@
-# rate_your_prof
+[DISCONTINUED]
 
-A new Flutter project.
-
-## Getting Started
+A Flutter app that allows students to rate their professors.
